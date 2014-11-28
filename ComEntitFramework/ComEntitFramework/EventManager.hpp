@@ -4,9 +4,11 @@
 #include <vector>
 #include <utility>
 #include "simplesignal.h"
+#include "BaseEvent.hpp"
+#include "BaseReceiver.hpp"
 
 namespace cef{
-	namespace manager{
+	namespace event{
 		class EventManager :
 			public cef::helper::NonCopyable
 		{
@@ -17,17 +19,13 @@ namespace cef{
 			template<typename e, typename Receiver>
 			void subscribe(Receiver & receiver);
 			void emit(const BaseEvent & event);
-
+			template < typename E>
+			void emit(std::unique_ptr<E> event);
 			template<typename e, typename ... Args>
 			void emit(Args &&...args);
 
 			std::size_t connectedReceivers() const;
 		private:
-			typedef Simple::Signal<void(const BaseEvent*)> EventSignal;
-			typedef std::shared_ptr<EventSignal> EventSignalPtr;
-			typedef std::weak_ptr<EventSignal> EventSignalWeakPtr;
-
-
 			EventSignalPtr & signalFor(std::size_t id);
 			std::vector<EventSignalPtr> handlers_;
 			
