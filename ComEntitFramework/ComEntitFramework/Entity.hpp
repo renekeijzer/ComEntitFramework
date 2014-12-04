@@ -2,9 +2,10 @@
 #include <cstdint>
 #include <bitset>
 #include <cassert>
+#include "Event.hpp"
 
 namespace cef{
-	namespace{
+	namespace entity{
 		typedef std::uint32_t uint32_t;
 		typedef std::uint64_t uint64_t;
 
@@ -106,5 +107,41 @@ namespace cef{
 
 			~Entity();
 		};
+	}
+	/*initializing Entity events here*/
+	namespace event{
+		template <typename C>
+		struct ComponentAddedEvent : public Event<ComponentAddedEvent<C>> {
+			ComponentAddedEvent(Entity entity, ComponentHandle<C> component) :
+			entity(entity), component(component) {}
+
+			Entity entity;
+			ComponentHandle<C> component;
+		};
+
+		template <typename C>
+		struct ComponentRemovedEvent : public Event<ComponentRemovedEvent<C>> {
+			ComponentRemovedEvent(Entity entity, ComponentHandle<C> component) :
+			entity(entity), component(component) {}
+
+			Entity entity;
+			ComponentHandle<C> component;
+		};
+
+		struct EntityCreatedEvent : public cef::event::Event<EntityCreatedEvent> {
+			explicit EntityCreatedEvent(cef::entity::Entity entity) : entity(entity) {}
+			virtual ~EntityCreatedEvent();
+
+			cef::entity::Entity entity;
+		};
+
+		struct EntityDestroyedEvent : public cef::event::Event<EntityDestroyedEvent> {
+			explicit EntityDestroyedEvent(cef::entity::Entity entity) : entity(entity) {}
+			virtual ~EntityDestroyedEvent();
+
+			cef::entity::Entity entity;
+		};
+
+	
 	}
 }

@@ -7,7 +7,7 @@ namespace cef{
 		Bootstrap() : entities(events), systems(entities, events){}
 
 		cef::event::EventManager events;
-		EntityManager entities;
+		cef::entity::EntityManager entities;
 		SystemManager systems;
 	};
 }

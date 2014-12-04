@@ -1,7 +1,7 @@
 #pragma once
 #include "Bootstrap.hpp"
 class Application :
-	public Bootstrap
+	public cef::Bootstrap
 {
 public:
 	Application();

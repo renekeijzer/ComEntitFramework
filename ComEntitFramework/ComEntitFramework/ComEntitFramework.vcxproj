@@ -71,15 +71,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp" />
+    <ClInclude Include="BaseEvent.hpp" />
+    <ClInclude Include="BaseReceiver.hpp" />
     <ClInclude Include="Bootstrap.hpp" />
+    <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="EventManager.hpp" />
     <ClInclude Include="NonCopyable.hpp" />
+    <ClInclude Include="Receiver.hpp" />
+    <ClInclude Include="simplesignal.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BaseEvent.cpp" />
+    <ClCompile Include="BaseReceiver.cpp" />
     <ClCompile Include="Bootstrap.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="NonCopyable.cpp" />
+    <ClCompile Include="Receiver.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
