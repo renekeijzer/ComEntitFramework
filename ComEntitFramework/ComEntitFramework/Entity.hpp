@@ -105,7 +105,6 @@ namespace cef{
 			Entity::Id id_ = INVALID;
 
 
-			~Entity();
 		};
 	}
 	/*initializing Entity events here*/
@@ -129,9 +128,9 @@ namespace cef{
 		};
 
 		struct EntityCreatedEvent : public cef::event::Event<EntityCreatedEvent> {
-			explicit EntityCreatedEvent(cef::entity::Entity entity) : entity(entity) {}
+			explicit cef::event::EntityCreatedEvent(cef::entity::Entity entity) : entity(entity) {}
 			virtual ~EntityCreatedEvent();
-
+		private:
 			cef::entity::Entity entity;
 		};
 
