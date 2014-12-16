@@ -1,11 +1,12 @@
 #pragma once
 #include "Entity.hpp"
+#include "EntityManager.hpp"
 #include <iterator>
 namespace cef{
 	namespace entity{
+
 		template<class Delegate, bool all = false>
-		class ViewIterator :
-			public std::iterator<std::input_iterator_tag, Entity::Id>
+		class ViewIterator : public std::iterator<std::input_iterator_tag, Entity::Id>
 		{
 		public:
 			Delegate &operator++(){
@@ -24,8 +25,8 @@ namespace cef{
 			ViewIterator(EntityManager *manager, const ComponentMask mask, uint32_t index);
 			void next();
 
-			inline bool valid_entity();
-			inline bool predicate();
+			bool valid_entity();
+			bool predicate();
 
 			EntityManager *manager_;
 			ComponentMask mask_;

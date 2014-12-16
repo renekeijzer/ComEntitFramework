@@ -74,28 +74,41 @@
     <ClInclude Include="BaseComponent.hpp" />
     <ClInclude Include="BaseEvent.hpp" />
     <ClInclude Include="BaseReceiver.hpp" />
+    <ClInclude Include="BaseView.hpp" />
     <ClInclude Include="Bootstrap.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="ComponentHandle.hpp" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="EntityManager.hpp" />
     <ClInclude Include="Event.hpp" />
     <ClInclude Include="EventManager.hpp" />
+    <ClInclude Include="Iterator.hpp" />
     <ClInclude Include="NonCopyable.hpp" />
     <ClInclude Include="Receiver.hpp" />
     <ClInclude Include="simplesignal.h" />
+    <ClInclude Include="UnpackingIterator.hpp" />
+    <ClInclude Include="UnpackingView.hpp" />
+    <ClInclude Include="ViewIterator.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="BaseComponent.cpp" />
     <ClCompile Include="BaseEvent.cpp" />
     <ClCompile Include="BaseReceiver.cpp" />
+    <ClCompile Include="BaseView.cpp" />
     <ClCompile Include="Bootstrap.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentHandle.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="Iterator.cpp" />
     <ClCompile Include="NonCopyable.cpp" />
     <ClCompile Include="Receiver.cpp" />
+    <ClCompile Include="UnpackingIterator.cpp" />
+    <ClCompile Include="UnpackingView.cpp" />
+    <ClCompile Include="ViewIterator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

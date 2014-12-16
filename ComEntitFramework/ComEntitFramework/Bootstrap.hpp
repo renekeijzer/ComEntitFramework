@@ -1,5 +1,6 @@
 #pragma once
 #include "EventManager.hpp"
+#include "EntityManager.hpp"
 namespace cef{
 	class Bootstrap
 	{

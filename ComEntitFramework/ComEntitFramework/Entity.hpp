@@ -3,12 +3,16 @@
 #include <bitset>
 #include <cassert>
 #include "Event.hpp"
+#include "Config.h"
+#include "BaseView.hpp"
 
 namespace cef{
 	namespace entity{
+		typedef std::bitset<MAX_COMPONENTS> ComponentMask;
 		typedef std::uint32_t uint32_t;
 		typedef std::uint64_t uint64_t;
-
+		typedef BaseView<false> View;
+		typedef BaseView<true> DebugView;
 		class EntityManager;
 
 

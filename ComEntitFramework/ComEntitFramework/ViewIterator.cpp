@@ -32,5 +32,20 @@ namespace cef{
 				static_cast<Delegate*>(this)->next_entity(entity);
 			}
 		}
+
+		template < class Delegate, bool All = false>
+		bool ViewIterator::predicate(){
+			return (All && valid_entity() || manager_->entity_component_mask[i_] & mask_) == mask_;
+		}
+
+		template<class Delegate, bool All = false>
+		bool valid_entity(){
+			if (free_cursor_ != manager_->free_list_.end() && *free_cursor_ == i_){
+				++free_cursor_;
+				return false;
+			}
+			return true;
+		}
+
 	}
 }
