@@ -166,6 +166,84 @@ namespace cef{
 			return UnpackingView<Components...>(this, mask, components...);
 		}
 
+		DebugView EntityManager::entities_for_debugging(){
+			return DebugView(this);
+		}
+
+
+		template<typename A, typename ... Args>
+		void EntityManager::unpack(Entity::Id id, ComponentHandle<A> &a, ComponentHandle<Args> & ... args){
+			assert_valid(id);
+			a = component<A>(id);
+			unpack<Args ...>(id, args...);
+		}
+
+		//here
+		template <typename C>
+		C * EntityManager::get_component_ptr(Entity::Id id) {
+			assert(valid(id));
+			BasePool *pool = component_pools_[C::family()];
+			assert(pool);
+			return static_cast<C*>(pool->get(id.index()));
+		}
+
+		template <typename C>
+		const C * EntityManager::get_component_ptr(Entity::Id id) const {
+			assert_valid(id);
+			BasePool *pool = component_pools_[C::family()];
+			assert(pool);
+			return static_cast<const C*>(pool->get(id.index()));
+		}
+
+		ComponentMask EntityManager::component_mask(Entity::Id id) {
+			assert_valid(id);
+			return entity_component_mask_.at(id.index());
+		}
+
+		template <typename C>
+		ComponentMask EntityManager::component_mask() {
+			ComponentMask mask;
+			mask.set(C::family());
+			return mask;
+		}
+
+		template <typename C1, typename C2, typename ... Components>
+		ComponentMask EntityManager::component_mask() {
+			return component_mask<C1>() | component_mask<C2, Components ...>();
+		}
+
+		template <typename C>
+		ComponentMask EntityManager::component_mask(const ComponentHandle<C> &c) {
+			return component_mask<C>();
+		}
+
+		template <typename C1, typename ... Components>
+		ComponentMask EntityManager::component_mask(const ComponentHandle<C1> &c1, const ComponentHandle<Components> &... args) {
+			return component_mask<C1, Components ...>();
+		}
+
+		void EntityManager::accomodate_entity(uint32_t index) {
+			if (entity_component_mask_.size() <= index) {
+				entity_component_mask_.resize(index + 1);
+				entity_version_.resize(index + 1);
+				for (cef::helper::BasePool *pool : component_pools_)
+				if (pool) pool->expand(index + 1);
+			}
+		}
+
+		template <typename T>
+		Pool<T> * EntityManager::accomodate_component() {
+			BaseComponent::Family family = T::family();
+			if (component_pools_.size() <= family) {
+				component_pools_.resize(family + 1, nullptr);
+			}
+			if (!component_pools_[family]) {
+				Pool<T> *pool = new Pool<T>();
+				pool->expand(index_counter_);
+				component_pools_[family] = pool;
+			}
+			return static_cast<Pool<T>*>(component_pools_[family]);
+		}
 
 	}
 }
