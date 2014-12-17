@@ -72,7 +72,10 @@
     <ClInclude Include="UnpackingView.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UnpackingIterator.hpp">
+    <ClInclude Include="BasePool.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pool.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,7 +128,10 @@
     <ClCompile Include="UnpackingView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnpackingIterator.cpp">
+    <ClCompile Include="BasePool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
