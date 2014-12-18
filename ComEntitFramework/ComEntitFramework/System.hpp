@@ -3,13 +3,20 @@
 namespace cef{
 	namespace systems{
 
-		class System :
-			public BaseSystem
-		{
+		template <typename Derived>
+		class System : public BaseSystem {
 		public:
-			System();
-			~System();
+			virtual ~System() {}
+
+		private:
+			friend class SystemManager;
+
+			static Family family() {
+				static Family family = family_counter_++;
+				return family;
+			}
 		};
+
 
 	}
 }

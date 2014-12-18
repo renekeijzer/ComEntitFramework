@@ -1,13 +1,9 @@
 #include "BaseSystem.hpp"
 namespace cef{
 	namespace systems{
-		BaseSystem::BaseSystem()
-		{
-		}
+		BaseSystem::Family BaseSystem::family_counter_;
 
-
-		BaseSystem::~BaseSystem()
-		{
+		BaseSystem::~BaseSystem() {
 		}
 	}
 }
