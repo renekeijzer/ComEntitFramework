@@ -5,6 +5,7 @@
 #include "Event.hpp"
 #include "Config.h"
 #include "BaseView.hpp"
+#include <ostream>
 
 namespace cef{
 	namespace entity{
@@ -102,8 +103,9 @@ namespace cef{
 			bool valid() const;
 			void destroy();
 
-			std::bitset<64> component_mask() const;
+			std::bitset<MAX_COMPONENTS> component_mask() const;
 
+			
 		private:
 			EntityManager *manager_ = nullptr;
 			Entity::Id id_ = INVALID;
@@ -131,17 +133,17 @@ namespace cef{
 			ComponentHandle<C> component;
 		};
 
-		struct EntityCreatedEvent : public cef::event::Event<EntityCreatedEvent> {
-			explicit cef::event::EntityCreatedEvent(cef::entity::Entity entity) : entity(entity) {}
+		struct EntityCreatedEvent : public Event<EntityCreatedEvent> {
+			explicit EntityCreatedEvent(cef::entity::Entity entity) : entity(entity) {}
 			virtual ~EntityCreatedEvent();
 		private:
 			cef::entity::Entity entity;
 		};
 
-		struct EntityDestroyedEvent : public cef::event::Event<EntityDestroyedEvent> {
+		struct EntityDestroyedEvent : public Event<EntityDestroyedEvent> {
 			explicit EntityDestroyedEvent(cef::entity::Entity entity) : entity(entity) {}
 			virtual ~EntityDestroyedEvent();
-
+		private:
 			cef::entity::Entity entity;
 		};
 

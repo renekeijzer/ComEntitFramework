@@ -9,7 +9,8 @@ namespace cef{
 		{
 		public:
 			typedef ComponentHandle<Derived> Handle;
-			static Family family();
+			static Family family();		
+			BaseComponent::Family family();
 		};
 
 	}

@@ -2,13 +2,25 @@
 
 namespace cef{
 	namespace entity{
-		EntityManager::EntityManager()
-		{
+		EntityManager::EntityManager(cef::event::EventManager &event_manager) : event_manager_(event_manager) {
 		}
 
 
 		EntityManager::~EntityManager()
 		{
+			reset();
+		}
+
+		void EntityManager::reset() {
+			for (Entity entity : entities_for_debugging()) entity.destroy();
+			for (cef::helper::BasePool *pool : component_pools_) {
+				if (pool) delete pool;
+			}
+			component_pools_.clear();
+			entity_component_mask_.clear();
+			entity_version_.clear();
+			free_list_.clear();
+			index_counter_ = 0;
 		}
 
 		bool EntityManager::valid(Entity::Id id){
@@ -38,7 +50,7 @@ namespace cef{
 			}
 
 			Entity entity(this, Entity::Id(index, version));
-			event_manager_.emit<EntityCreatedEvent>(entity);
+			event_manager_.emit<event::EntityCreatedEvent>(entity);
 			return entity;
 		}
 
@@ -48,7 +60,7 @@ namespace cef{
 			uint32_t index = entity.index();
 			auto mask = entity_component_mask_[entity.index()];
 
-			event_manager_.emit<EntityDestroyedEvent>(Entity(this, entity));
+			event_manager_.emit<event::EntityDestroyedEvent>(Entity(this, entity));
 			for (size_t i = 0; i < component_pools_.size(); i++){
 				cef::helper::BasePool * pool = component_pools_[i];
 				if (pool && mask.test(i)){
@@ -82,7 +94,7 @@ namespace cef{
 			entity_component_mask_[id.index()].set(family);
 
 			ComponentHandle<C> component(this, id);
-			event_manager_.emit<ComponentAddedEvent<C>>(Entity(this, id), component);
+			event_manager_.emit<event::ComponentAddedEvent<C>>(Entity(this, id), component);
 			return component;
 		}
 
@@ -178,7 +190,6 @@ namespace cef{
 			unpack<Args ...>(id, args...);
 		}
 
-		//here
 		template <typename C>
 		C * EntityManager::get_component_ptr(Entity::Id id) {
 			assert(valid(id));

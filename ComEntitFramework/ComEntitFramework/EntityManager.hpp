@@ -3,6 +3,7 @@
 #include "Entity.hpp"
 #include "EventManager.hpp"
 #include "BasePool.hpp"
+#include "EventManager.hpp"
 #include "Pool.hpp"
 #include <new>
 namespace cef{
@@ -92,7 +93,7 @@ namespace cef{
 			Pool<T> *accomodate_component();
 
 
-
+			cef::event::EventManager &event_manager_;
 			uint32_t index_counter_ = 0;
 			std::vector<cef::helper::BasePool *> component_pools_;
 			std::vector<uint32_t> entity_version_;
