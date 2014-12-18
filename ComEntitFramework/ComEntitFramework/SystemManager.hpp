@@ -7,12 +7,13 @@
 #include "EventManager.hpp"
 namespace cef{
 	namespace systems{
+		class BaseSystem;
 		class SystemManager :
 			public cef::helper::NonCopyable
 		{
 		public:
-			SystemManager(entity::EntityManager &entity_manager,
-				event::EventManager &event_manager) :
+			SystemManager(cef::entity::EntityManager &entity_manager,
+				cef::event::EventManager &event_manager) :
 				entity_manager_(entity_manager),
 				event_manager_(event_manager) {}
 
@@ -32,8 +33,8 @@ namespace cef{
 
 		private:
 			bool initialized_ = false;
-			entity::EntityManager entity_manager_;
-			event::EventManager event_manager_;
+			cef::entity::EntityManager entity_manager_;
+			cef::event::EventManager event_manager_;
 			std::unordered_map<BaseSystem::Family, std::shared_ptr<BaseSystem>> systems_;
 		};
 	}

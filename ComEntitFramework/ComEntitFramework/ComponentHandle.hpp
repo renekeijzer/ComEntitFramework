@@ -27,7 +27,7 @@ namespace cef{
 		private:
 			friend class EntityManager;
 			ComponentHandle(EntityManager *manager, Entity::Id id) : manager_(manager), id_(id){}
-			ComponentHandle(const EntityManager * manager, Entity::Id id) : manager_(const_cast<EntityManager*>(manager)), id_(id)){}
+			ComponentHandle(const EntityManager * manager, Entity::Id id) : manager_(const_cast<EntityManager*>(manager), id_(id)){}
 
 			EntityManager * manager_;
 			Entity::Id id_;

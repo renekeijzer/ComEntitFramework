@@ -75,6 +75,7 @@
     <ClInclude Include="BaseEvent.hpp" />
     <ClInclude Include="BasePool.hpp" />
     <ClInclude Include="BaseReceiver.hpp" />
+    <ClInclude Include="BaseSystem.hpp" />
     <ClInclude Include="BaseView.hpp" />
     <ClInclude Include="Bootstrap.hpp" />
     <ClInclude Include="Component.hpp" />
@@ -89,6 +90,8 @@
     <ClInclude Include="Pool.hpp" />
     <ClInclude Include="Receiver.hpp" />
     <ClInclude Include="simplesignal.h" />
+    <ClInclude Include="System.hpp" />
+    <ClInclude Include="SystemManager.hpp" />
     <ClInclude Include="UnpackingView.hpp" />
     <ClInclude Include="ViewIterator.hpp" />
   </ItemGroup>
@@ -98,6 +101,7 @@
     <ClCompile Include="BaseEvent.cpp" />
     <ClCompile Include="BasePool.cpp" />
     <ClCompile Include="BaseReceiver.cpp" />
+    <ClCompile Include="BaseSystem.cpp" />
     <ClCompile Include="BaseView.cpp" />
     <ClCompile Include="Bootstrap.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -109,6 +113,9 @@
     <ClCompile Include="NonCopyable.cpp" />
     <ClCompile Include="Pool.cpp" />
     <ClCompile Include="Receiver.cpp" />
+    <ClCompile Include="System.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="UnpackingView.cpp" />
     <ClCompile Include="ViewIterator.cpp" />
   </ItemGroup>

@@ -2,8 +2,11 @@
 #include "Entity.hpp"
 #include "EntityManager.hpp"
 #include <iterator>
+
+class Entity;
 namespace cef{
 	namespace entity{
+
 
 		template<class Delegate, bool all = false>
 		class ViewIterator : public std::iterator<std::input_iterator_tag, Entity::Id>
@@ -18,8 +21,9 @@ namespace cef{
 
 			bool operator == (const Delegate& rhs) const { return i_ == rhs.i_; }
 			bool operator != (const Delegate& rhs) const { return i_ != rhs.i_; }
-			Entity operator * () { return Entity(manager_, manager_->create_id(i_)); }
-			const Entity operator * () const { return Entity(manager_, manager_->create_id(i_)); }
+			
+			Entity operator* () { return Entity(manager_, manager_->create_id(i_)); }
+			const Entity operator* () const { return Entity(manager_, manager_->create_id(i_)); }
 		protected:
 			ViewIterator(EntityManager *manager, uint32_t index);
 			ViewIterator(EntityManager *manager, const ComponentMask mask, uint32_t index);

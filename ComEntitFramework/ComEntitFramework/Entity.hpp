@@ -5,6 +5,7 @@
 #include "Event.hpp"
 #include "Config.h"
 #include "BaseView.hpp"
+#include "Component.hpp"
 #include <ostream>
 
 namespace cef{

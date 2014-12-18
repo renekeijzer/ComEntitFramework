@@ -8,6 +8,7 @@
 #include <new>
 namespace cef{
 	namespace entity{
+
 		class EntityManager : cef::helper::NonCopyable
 		{
 		public:
