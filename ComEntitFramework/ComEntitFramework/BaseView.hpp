@@ -1,7 +1,10 @@
 #pragma once
 #include "Iterator.hpp"
+
 namespace cef{
 	namespace entity{
+		class Iterator;
+
 		template<bool all>
 		class BaseView
 		{

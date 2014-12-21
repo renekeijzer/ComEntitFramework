@@ -1,8 +1,13 @@
 #pragma once
-#include "ComponentHandle.hpp"
 #include "BaseComponent.hpp"
 namespace cef{
 	namespace entity{
+
+
+		template<typename C>
+		class ComponentHandle;
+
+
 		template <typename Derived>
 		class Component :
 			public BaseComponent

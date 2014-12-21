@@ -10,23 +10,21 @@
 
 namespace cef{
 	namespace entity{
+		template<bool all>
+		class BaseView;
+
 		typedef std::bitset<MAX_COMPONENTS> ComponentMask;
 		typedef std::uint32_t uint32_t;
 		typedef std::uint64_t uint64_t;
 		typedef BaseView<false> View;
 		typedef BaseView<true> DebugView;
-		class EntityManager;
-
-
-		template <typename C>
-		class ComponentHandle;
+		
 
 		class Entity
 		{
 		public:
 			struct Id
-			{
-			Id(): id_(0){}
+			{Id() : id_(0){}
 			explicit Id(uint64_t id) : id_(id){}
 			Id(uint32_t index, uint32_t version) : id_(uint64_t(index) | uint64_t(version) << 32UL) {}
 

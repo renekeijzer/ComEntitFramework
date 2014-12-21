@@ -1,4 +1,6 @@
 #pragma once
+
+#include "ComponentHandle.hpp"
 #include <memory>
 
 namespace cef{
@@ -13,11 +15,11 @@ namespace cef{
 
 		protected:
 			static void fail(){
-#if defined(_HAS_EXCEPTIONS)|| defined(__EXCEPTIONS)
+			#if defined(_HAS_EXCEPTIONS)|| defined(__EXCEPTIONS)
 				throw std::bad_alloc();
-#else
+			#else
 				std::abort();
-#endif
+			#endif
 			}
 			static Family family_counter_;
 		};

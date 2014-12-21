@@ -9,6 +9,9 @@
 
 namespace cef{
 	namespace systems{
+		class entity::EntityManager;
+		class event::EventManager;
+
 
 		class BaseSystem :
 			public helper::NonCopyable

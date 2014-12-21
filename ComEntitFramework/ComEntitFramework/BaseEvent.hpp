@@ -1,4 +1,10 @@
 #pragma once
+#include <memory>
+#include <vector>
+#include <utility>
+#include "simplesignal.h"
+#include "BaseEvent.hpp"
+#include "Receiver.hpp"
 namespace cef{
 	namespace event{
 		class BaseEvent

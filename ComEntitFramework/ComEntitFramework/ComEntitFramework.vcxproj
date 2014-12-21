@@ -85,6 +85,7 @@
     <ClInclude Include="EntityManager.hpp" />
     <ClInclude Include="Event.hpp" />
     <ClInclude Include="EventManager.hpp" />
+    <ClInclude Include="fwd.h" />
     <ClInclude Include="Iterator.hpp" />
     <ClInclude Include="NonCopyable.hpp" />
     <ClInclude Include="Pool.hpp" />
@@ -115,7 +116,6 @@
     <ClCompile Include="Receiver.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="SystemManager.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="UnpackingView.cpp" />
     <ClCompile Include="ViewIterator.cpp" />
   </ItemGroup>
